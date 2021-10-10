@@ -1,0 +1,22 @@
+{
+  "name": "mentoring",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "task1": "nodemon index.js",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AntonSork/node-mentoring.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AntonSork/node-mentoring/issues"
+  },
+  "homepage": "https://github.com/AntonSork/node-mentoring#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  }
+}
