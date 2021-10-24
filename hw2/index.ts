@@ -21,7 +21,7 @@ app.post('/users', validator.body(userSchema), (req: ValidatedRequest<UserSchema
   res.status(200).send(user);
 });
 
-app.put('/users', (req: Request, res: Response) => {
+app.put('/users', validator.body(userSchema), (req: ValidatedRequest<UserSchema>, res: Response) => {
   const user = req.body as User
   try {
     const updatedUser: User = db.updateUser(user);
