@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "strictPropertyInitialization": false,
+    "esModuleInterop": true,
+    "target": "ES2021",
+    "moduleResolution": "node12"
+  }
+}

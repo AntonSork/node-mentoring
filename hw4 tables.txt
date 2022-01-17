@@ -1,0 +1,5 @@
+create TABLE UserGroup (id UUID, user_id UUID REFERENCES users (id) ON DELETE CASCADE, group_id UUID REFERENCES groups (id) ON DELETE CASCADE);
+
+create TABLE Users(id UUID PRIMARY KEY, login TEXT NOT NULL, password TEXT NOT NULL, age INT NOT NULL, isDeleted BOOL)
+
+create TABLE groups (id UUID PRIMARY KEY, name TEXT NOT NULL,  permissions TEXT[] NOT NULL);
