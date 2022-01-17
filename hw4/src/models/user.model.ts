@@ -1,7 +1,5 @@
 import { DataTypes, Model, Optional } from "sequelize"
 import { sequelize } from "../db"
-import { GroupModel } from "./group.model"
-import { UserToGroupModel } from "./user_group.model"
 
 type UserAttributes = {
   id?: string;

@@ -4,13 +4,17 @@ export class Service<Input, Output extends { id: string }> {
     this.model = entityModel;
   }
 
-  public async get(id: string): Promise<Output> {
+  public async get(id: string, softRemoving?: boolean): Promise<Output> {
     const options = {
       where: {
-        id,
-        isdeleted: false
+        id
       }
     };
+
+    if (softRemoving) {
+      options.where['isdeleted'] = false;
+    }
+
     const entity = await this.model.findOne(options);
     return entity?.dataValues;
   }
@@ -33,7 +37,7 @@ export class Service<Input, Output extends { id: string }> {
 
   public async softDelete(entity: Output): Promise<Output> {
     const { id } = entity;
-    entity = {...entity, isdeleted: true}
+    entity = { ...entity, isdeleted: true }
     const options = {
       where: { id },
       returning: true
@@ -45,13 +49,16 @@ export class Service<Input, Output extends { id: string }> {
 
   public async hardDelete(entity: Output): Promise<Output> {
     const { id } = entity;
-    entity = {...entity, isdeleted: true}
     const options = {
       where: { id },
-      returning: true
+      returning: true,
+      truncate: false
     };
 
-    const result = await this.model.destroy(entity, options)
+    console.log(options);
+    
+
+    const result = await this.model.destroy(options)
     return result;
   }
 

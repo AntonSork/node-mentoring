@@ -1,7 +1,5 @@
-import { DataTypes, Model, Optional } from "sequelize"
-import { sequelize } from "../db/index"
-import { UserModel } from "./user.model";
-import { UserToGroupModel } from "./user_group.model";
+import { DataTypes, Model, Optional } from "sequelize";
+import { sequelize } from "../db/index";
 
 const permissions = ['READ', 'WRITE', 'DELETE', 'SHARE', 'UPLOAD_FIlES'];
 //convert array to union

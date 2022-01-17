@@ -17,7 +17,7 @@ groupRouter.get('/:id', async (req: Request, res: Response) => {
 
   const id = String(req.params.id);
 
-  const user = await groupService.get(id).catch(err => {console.log(err)})
+  const user = await groupService.get(id).catch(err => { console.log(err) })
 
   if (!user) {
     return res.status(404).send('User not found')
@@ -35,23 +35,29 @@ groupRouter.put('/:id', async (req: Request, res: Response) => {
     return res.status(404).send('User not found')
   }
 
-  const result = await groupService.update({...user, ...payload}).catch(err => {console.log(err)});
+  const result = await groupService.update({ ...user, ...payload }).catch(err => { console.log(err) });
   return res.status(201).send(result);
 })
 
 groupRouter.delete('/:id', async (req: Request, res: Response) => {
   const id = String(req.params.id);
+  try {
+    const group = await groupService.get(id);
 
-  const user = await groupService.get(id);
+    if (!group) {
+      return res.status(404).send('Group not found')
+    }
 
-  if (!user) {
-    return res.status(404).send('User not found')
+    const result = await groupService.hardDelete(group);
+    return res.status(204).send({
+      success: result
+    });
+  } catch (err) {
+    console.log(err);
+
   }
 
-  const result = await groupService.hardDelete(user);
-  return res.status(204).send({
-    success: result
-  });
+  
 })
 
 groupRouter.post('/', async (req: Request, res: Response) => {

@@ -12,13 +12,22 @@ type UserToGroupAttributes = {
 export type UserToGroupInput = Optional<UserToGroupAttributes, 'id'>
 export type UserToGroupOutput = Required<UserToGroupAttributes>
 
-class UserToGroup extends Model<UserToGroupAttributes, UserToGroupInput> implements UserToGroupAttributes {
+export class UserToGroup implements UserToGroupAttributes {
+  public user_id: string;
+  public group_id: string;
+  constructor(userId: string, groupId: string) {
+    this.user_id = userId;
+    this.group_id = groupId;
+  }
+}
+
+class UserToGroupModel extends Model<UserToGroupAttributes, UserToGroupInput> implements UserToGroupAttributes {
   public id: string;
   public user_id: string;
   public group_id: string;
 }
 
-UserToGroup.init(
+UserToGroupModel.init(
   {
     id: {
       type: DataTypes.UUID,
@@ -26,7 +35,7 @@ UserToGroup.init(
       primaryKey: true
     },
     user_id: {
-      type: DataTypes.STRING,
+      type: DataTypes.UUID,
       allowNull: false,
       onDelete: 'CASCADE',
       references: {
@@ -35,7 +44,7 @@ UserToGroup.init(
       }
     },
     group_id: {
-      type: DataTypes.STRING,
+      type: DataTypes.UUID,
       allowNull: false,
       onDelete: 'CASCADE',
       references: {
@@ -46,9 +55,9 @@ UserToGroup.init(
   },
   {
     sequelize,
-    tableName: 'groups',
+    tableName: 'usergroup',
     timestamps: false
   }
 );
 
-export { UserToGroup as UserToGroupModel }
+export { UserToGroupModel }
