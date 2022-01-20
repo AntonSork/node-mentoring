@@ -1,0 +1,9 @@
+{"level":"error","service":"userService"}
+{"level":"error","service":"userService"}
+{"level":"error","service":"userService"}
+{"level":"error","service":"userService"}
+{"level":"error","service":"logger"}
+{"level":"error","service":"logger"}
+{"level":"error","service":"uncaughtException"}
+{"level":"error","service":"unhandledrejection"}
+{"level":"error","service":"unhandledrejection"}

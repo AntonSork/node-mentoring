@@ -8,13 +8,8 @@ export class CustomLogger {
   public log() {
     const self = this;
     return (req, res, next) => {
-      try {
-        console.log(self.serviceName);
-        next();
-      } catch (e) {
-        console.log(e)
-      }
-
+      console.log(self.serviceName);
+      next();
     }
   }
 }

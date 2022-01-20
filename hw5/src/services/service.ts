@@ -55,9 +55,6 @@ export class Service<Input, Output extends { id: string }> {
       truncate: false
     };
 
-    console.log(options);
-    
-
     const result = await this.model.destroy(options)
     return result;
   }
