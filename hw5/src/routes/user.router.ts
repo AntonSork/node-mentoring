@@ -8,6 +8,7 @@ import { userService } from '../services';
 const usersRouter = Router()
 const validator = createValidator();
 usersRouter.get('/', async (req: Request, res: Response, next) => {
+  console.log(req);
   const filters = req.query;
 
   const results = await userService.getAll(filters).catch(err => { console.log(err) });

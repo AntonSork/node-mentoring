@@ -1,5 +1,5 @@
 export class Service<Input, Output extends { id: string }> {
-  private model;
+  protected model;
   constructor(entityModel) {
     this.model = entityModel;
   }
